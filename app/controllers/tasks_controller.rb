@@ -1,2 +1,46 @@
 class TasksController < ApplicationController
+
+  def index
+    @tasks = Task.all
+  end
+
+  def show
+    @task = Task.find(params[:id])
+  end
+  #?record not found - this just because no database
+
+  def new
+    @task = Task.new
+  end
+
+  def create
+    @task = Task.new(task_params)
+    @task.save
+    redirect_to show_task_path(@task)
+  end
+
+  def edit
+    @task = Task.find(params[:id])
+  end
+
+
+  def update
+    @task = Task.find(params[:id])
+    @task.update(task_params)
+    redirect_to show_task_path(@task)
+  end
+
+  def delete
+    @task = Task.find(params[:id])
+    @task.destroy
+
+    # no need for app/views/restaurants/destroy.html.erb
+    redirect_to tasks_path
+  end
+
+  private
+
+  def task_params
+    params.require(:task).permit(:title, :details, :completed)
+  end
 end

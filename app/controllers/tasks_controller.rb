@@ -7,7 +7,6 @@ class TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
   end
-  #?record not found - this just because no database
 
   def new
     @task = Task.new
@@ -22,7 +21,6 @@ class TasksController < ApplicationController
   def edit
     @task = Task.find(params[:id])
   end
-
 
   def update
     @task = Task.find(params[:id])

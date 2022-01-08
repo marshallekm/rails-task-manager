@@ -2,4 +2,6 @@
 <p><%= @task.details %></p>
 <p><%= @task.completed %></p>
 
-<%= link_to "Delete", delete_task_path(@task), action: "delete", method: "delete"%>
+<%= link_to "Delete", delete_task_path(@task), action: "delete", method: "delete", data: { confirm: "Are you sure?" }%>
+<%= link_to "Edit", edit_task_path(@task), action: "edit" %>
+<%= link_to "Go back to list", root_path(@task)%>
